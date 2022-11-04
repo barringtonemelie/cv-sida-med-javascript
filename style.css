@@ -288,8 +288,25 @@ p {
     padding: 1.5rem; 
 }
 
+.cards-hidden {
+    display: none;
+}
 
+.loader {
+    width: 120px; 
+    height: 120px; 
+    border: 1rem solid white; 
+    border-top: 1rem solid var(--medium-bg-colour); 
+    border-radius: 50%;
+    animation: spin 2s linear infinite; 
+    position: relative;
+    top: -5rem; 
+}
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
 footer {
     background-color: var(--dark-bg-colour);
@@ -453,6 +470,10 @@ footer>p {
         .index-profile {
             border-left: 2px dotted #d67a7a;
         }
+    }
+    .loader {
+        border: 1rem solid #240303; 
+        border-top: 1rem solid #f03c3c;
     }
     .gallery-card>h3 {
         background-color: #561F1F;
