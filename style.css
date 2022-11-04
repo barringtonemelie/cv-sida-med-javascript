@@ -19,7 +19,7 @@ html, body {
 }
 
 .bg {
-    background-image: url('images/bg-books.jpeg'); 
+    background-image: url('./images/bg-light-mode.jpeg'); 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; 
@@ -411,6 +411,9 @@ footer>p {
 /* Dark color scheme */
 
 @media (prefers-color-scheme: dark) {
+    .bg {
+        background-image: url('./images/bg-dark-mode.jpeg'); 
+    }
     header {
         background-color: #100000;
     }
@@ -428,6 +431,7 @@ footer>p {
         background-color: #3d0707;
         color: #e06464;
     }
+    
     #nav-active {
         background-color: #561F1F;
         color: #e48787; 
