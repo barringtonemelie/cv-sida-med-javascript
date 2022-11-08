@@ -16,7 +16,7 @@ const eduDescription = document.querySelectorAll(".edu-description");
 
 const path = window.location.pathname; 
 
-if (path === "/experience.html") {
+if (path === "/experience.html" || path === "/cv-sida-med-javascript/experience.html") {
     getWorkResume();
 
     async function getWorkResume() {
@@ -45,7 +45,7 @@ if (path === "/experience.html") {
         }
     }
 }
-else if (path === "/education.html") {
+else if (path === "/education.html" || path === "/cv-sida-med-javascript/education.html") {
     getEducationResume(); 
 
     async function getEducationResume () {
