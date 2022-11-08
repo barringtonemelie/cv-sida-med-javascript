@@ -235,6 +235,12 @@ p {
 
 .gallery-card {
     overflow: hidden;
+    transition: transform .2s; 
+}
+
+.gallery-card:hover {
+    z-index: 100; 
+    transform: scale(1.2); 
 }
 
 .gallery-card>h3 {
@@ -295,8 +301,8 @@ p {
 .loader {
     width: 120px; 
     height: 120px; 
-    border: 1rem solid white; 
-    border-top: 1rem solid var(--medium-bg-colour); 
+    border: 1rem solid var(--dark-bg-colour); 
+    border-top: 1rem solid var(--light-bg-colour); 
     border-radius: 50%;
     animation: spin 2s linear infinite; 
     position: relative;
@@ -472,8 +478,8 @@ footer>p {
         }
     }
     .loader {
-        border: 1rem solid #240303; 
-        border-top: 1rem solid #f03c3c;
+        border: 1rem solid #df3939; 
+        border-top: 1rem solid #561F1F;
     }
     .gallery-card>h3 {
         background-color: #561F1F;
