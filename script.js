@@ -14,57 +14,67 @@ const eduTitle = document.querySelectorAll(".edu-title");
 const eduYears = document.querySelectorAll(".edu-year"); 
 const eduDescription = document.querySelectorAll(".edu-description"); 
 
+const path = window.location.pathname; 
 
-async function getWorkResume() {
-    let response = await fetch(url);
-    
-    if (response.ok) {
-        let dataResume = await response.json(); 
-        loader.style.display = "none"; 
+if (path === "/experience.html") {
+    getWorkResume();
+
+    async function getWorkResume() {
+        let response = await fetch(url);
         
-        for (let i = 0; i < dataResume.work.length; i++) {
-            workTitle[i].innerHTML += dataResume.work[i].title;
+        if (response.ok) {
+            let dataResume = await response.json(); 
+            loader.style.display = "none"; 
             
-            workYears[i].innerHTML += dataResume.work[i].year;
-
-            workDescription[i].innerHTML += dataResume.work[i].description;
-
-        }
-
-        workCards.forEach(card => {
-            card.classList.toggle("cards-hidden"); 
-        });
-
-    }
-    else {
-        console.log("HTTP error: " + response.status); 
-    }
-}
-
-async function getEducationResume () {
-    let response = await fetch(url);
+            for (let i = 0; i < dataResume.work.length; i++) {
+                workTitle[i].innerHTML += dataResume.work[i].title;
+                
+                workYears[i].innerHTML += dataResume.work[i].year;
     
-    if (response.ok) {
-        let dataResume = await response.json(); 
-        loader.style.display = "none"; 
-        for (let i = 0; i < dataResume.education.length; i++) {
-            eduTitle[i].innerHTML += dataResume.education[i].type;
-            
-            eduYears[i].innerHTML += dataResume.education[i].year;
-
-            eduDescription[i].innerHTML += dataResume.education[i].school;
-
+                workDescription[i].innerHTML += dataResume.work[i].description;
+    
+            }
+    
+            workCards.forEach(card => {
+                card.classList.toggle("cards-hidden"); 
+            });
+    
         }
-
-        eduCards.forEach(card => {
-            card.classList.toggle("edu-cards-hidden");
-        });
-    }
-    else {
-        console.log("HTTP error: " + response.status); 
+        else {
+            console.log("HTTP error: " + response.status); 
+        }
     }
 }
+else if (path === "/education.html") {
+    getEducationResume(); 
 
-getEducationResume(); 
+    async function getEducationResume () {
+        let response = await fetch(url);
+        
+        if (response.ok) {
+            let dataResume = await response.json(); 
+            loader.style.display = "none"; 
+            for (let i = 0; i < dataResume.education.length; i++) {
+                eduTitle[i].innerHTML += dataResume.education[i].type;
+                
+                eduYears[i].innerHTML += dataResume.education[i].year;
+    
+                eduDescription[i].innerHTML += dataResume.education[i].school;
+    
+            }
+    
+            eduCards.forEach(card => {
+                card.classList.toggle("edu-cards-hidden");
+            });
+        }
+        else {
+            console.log("HTTP error: " + response.status); 
+        }
+    }
+    
+}
 
-// getWorkResume();
+
+
+
+
