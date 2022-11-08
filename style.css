@@ -193,10 +193,10 @@ p {
 
 .about-page {
     display: flex; 
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    
+    padding-top: 2rem; 
 }
 
 .about-page>h3 {
@@ -219,6 +219,14 @@ p {
 .main-about>h3 {
     font-family: "Major Mono Display";
     padding: 1.5rem;
+}
+
+.about-list>li>a {
+    color: var(--text-color);
+}
+
+.about-list>li>a:visited {
+    color: var(--text-color);
 }
 
 
