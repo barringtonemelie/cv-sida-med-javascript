@@ -289,12 +289,17 @@ p {
     border-bottom: 2px dotted var(--text-color);
 }
 
-.cards>h3, .cards>h4 {
+.cards>h3, .cards>h4, .cards>p {
     font-family: "Cutive Mono";
     padding: 1.5rem; 
+    text-align: center;
 }
 
 .cards-hidden {
+    display: none;
+}
+
+.edu-cards-hidden {
     display: none;
 }
 

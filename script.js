@@ -9,7 +9,13 @@ const workTitle = document.querySelectorAll(".work-title");
 const workYears = document.querySelectorAll(".work-years"); 
 const workDescription = document.querySelectorAll(".work-description"); 
 
-async function getWorkExperience() {
+const eduCards = document.querySelectorAll(".edu-cards-hidden"); 
+const eduTitle = document.querySelectorAll(".edu-title"); 
+const eduYears = document.querySelectorAll(".edu-year"); 
+const eduDescription = document.querySelectorAll(".edu-description"); 
+
+
+async function getWorkResume() {
     let response = await fetch(url);
     
     if (response.ok) {
@@ -17,17 +23,48 @@ async function getWorkExperience() {
         loader.style.display = "none"; 
         
         for (let i = 0; i < dataResume.work.length; i++) {
-            console.log(dataResume.work[i]); 
-            console.log(workTitle[i]); 
+            workTitle[i].innerHTML += dataResume.work[i].title;
+            
+            workYears[i].innerHTML += dataResume.work[i].year;
+
+            workDescription[i].innerHTML += dataResume.work[i].description;
+
         }
-        // workCards.forEach(card => {
-        //     console.log(card); 
-        //     card.classList.toggle("cards-hidden"); 
-        // }); 
+
+        workCards.forEach(card => {
+            card.classList.toggle("cards-hidden"); 
+        });
+
     }
     else {
         console.log("HTTP error: " + response.status); 
     }
 }
 
-getWorkExperience(); 
+async function getEducationResume () {
+    let response = await fetch(url);
+    
+    if (response.ok) {
+        let dataResume = await response.json(); 
+        loader.style.display = "none"; 
+        for (let i = 0; i < dataResume.education.length; i++) {
+            eduTitle[i].innerHTML += dataResume.education[i].type;
+            
+            eduYears[i].innerHTML += dataResume.education[i].year;
+
+            eduDescription[i].innerHTML += dataResume.education[i].school;
+
+        }
+
+        eduCards.forEach(card => {
+            card.classList.toggle("edu-cards-hidden");
+        });
+    }
+    else {
+        console.log("HTTP error: " + response.status); 
+    }
+}
+
+getEducationResume(); 
+
+// getWorkResume();
