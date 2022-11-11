@@ -234,24 +234,14 @@ p {
 
 .gallery-container {
     padding: 1rem; 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-template-rows: repeat(6, 100px); 
-    grid-gap: 1rem; 
-    grid-auto-flow: dense; 
 }
 
-.gallery-card {
+.gallery-container>div {
     overflow: hidden;
-    transition: transform .2s; 
+    padding: 0.5rem; 
 }
 
-.gallery-card:hover {
-    z-index: 100; 
-    transform: scale(1.2); 
-}
-
-.gallery-card>h3 {
+.gallery-container>div>h3 {
     font-family: "Cutive Mono";
     font-size: 0.8rem;
     max-width: 150px; 
@@ -261,12 +251,7 @@ p {
     background-color: var(--off-white);
 }
 
-.gallery-card:nth-child(4n) {
-    grid-column: span 2; 
-    grid-row: span 2; 
-}
-
-.gallery-card>img {
+.gallery-container>div>img {
     object-fit: cover;
     width: 100%; 
     height: auto; 
@@ -421,20 +406,28 @@ footer>p {
     /* Portfolio page styling */
 
     .gallery-container {
+        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         grid-template-rows: repeat(6, 200px);
+        grid-auto-flow: dense;
     }
-
-    .gallery-card>h3 {
+    .gallery-container>div {
+        transition: transform .2s; 
+    }
+    .gallery-container>div:hover {
+        z-index: 100; 
+        transform: scale(1.2); 
+    }
+    .gallery-container>div>h3 {
         font-size: 1.2rem;
     }
 
-    .gallery-card:nth-child(4n) {
+    .gallery-container>div:nth-child(4n) {
         grid-column: span 2; 
         grid-row: span 2; 
     }
     
-    .gallery-card:nth-child(8n) {
+    .gallery-container>div:nth-child(8n) {
         grid-column: span 3; 
         grid-row: span 3; 
     }
