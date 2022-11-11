@@ -1,4 +1,5 @@
-const url = "cv.json"; 
+const url = "cv.json";
+const repoUrl = "https://api.github.com/users/barringtonemelie/repos"; 
 const loader = document.querySelector(".loader"); 
 
 //Also, event delegation, event.target.getAttribute() (custom property) och spara till variabel för att se vad som tryckted på,
@@ -18,61 +19,76 @@ const path = window.location.pathname;
 
 if (path === "/experience.html" || path === "/cv-sida-med-javascript/experience.html") {
     getWorkResume();
-
-    async function getWorkResume() {
-        let response = await fetch(url);
-        
-        if (response.ok) {
-            let dataResume = await response.json(); 
-            loader.style.display = "none"; 
-            
-            for (let i = 0; i < dataResume.work.length; i++) {
-                workTitle[i].innerHTML += dataResume.work[i].title;
-                
-                workYears[i].innerHTML += dataResume.work[i].year;
-    
-                workDescription[i].innerHTML += dataResume.work[i].description;
-    
-            }
-    
-            workCards.forEach(card => {
-                card.classList.toggle("cards-hidden"); 
-            });
-    
-        }
-        else {
-            console.log("HTTP error: " + response.status); 
-        }
-    }
 }
 else if (path === "/education.html" || path === "/cv-sida-med-javascript/education.html") {
     getEducationResume(); 
-
-    async function getEducationResume () {
-        let response = await fetch(url);
-        
-        if (response.ok) {
-            let dataResume = await response.json(); 
-            loader.style.display = "none"; 
-            for (let i = 0; i < dataResume.education.length; i++) {
-                eduTitle[i].innerHTML += dataResume.education[i].type;
-                
-                eduYears[i].innerHTML += dataResume.education[i].year;
-    
-                eduDescription[i].innerHTML += dataResume.education[i].school;
-    
-            }
-    
-            eduCards.forEach(card => {
-                card.classList.toggle("edu-cards-hidden");
-            });
-        }
-        else {
-            console.log("HTTP error: " + response.status); 
-        }
-    }
-    
 }
+else if (path === "/portfolio.html" || path === "/cv-sida-med-javascript/portfolio.html") {
+    getRepos(); 
+}
+
+async function getWorkResume() {
+    let response = await fetch(url);
+    
+    if (response.ok) {
+        let dataResume = await response.json(); 
+        loader.style.display = "none"; 
+        
+        for (let i = 0; i < dataResume.work.length; i++) {
+            workTitle[i].innerHTML += dataResume.work[i].title;
+            
+            workYears[i].innerHTML += dataResume.work[i].year;
+
+            workDescription[i].innerHTML += dataResume.work[i].description;
+
+        }
+
+        workCards.forEach(card => {
+            card.classList.toggle("cards-hidden"); 
+        });
+
+    }
+    else {
+        console.log("HTTP error: " + response.status); 
+    }
+}
+
+async function getEducationResume () {
+    let response = await fetch(url);
+    
+    if (response.ok) {
+        let dataResume = await response.json(); 
+        loader.style.display = "none"; 
+        for (let i = 0; i < dataResume.education.length; i++) {
+            eduTitle[i].innerHTML += dataResume.education[i].type;
+            
+            eduYears[i].innerHTML += dataResume.education[i].year;
+
+            eduDescription[i].innerHTML += dataResume.education[i].school;
+
+        }
+
+        eduCards.forEach(card => {
+            card.classList.toggle("edu-cards-hidden");
+        });
+    }
+    else {
+        console.log("HTTP error: " + response.status); 
+    }
+}
+
+async function getRepos() {
+    let response = await fetch(repoUrl); 
+    if (response.ok) {
+        let repos = await response.json(); 
+        console.log(repos); 
+    }
+    else {
+        console.log("HTTP error: " + response.status); 
+    }
+};
+
+getRepos(); 
 
 
 
