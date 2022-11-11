@@ -1,6 +1,8 @@
 const url = "cv.json";
 const repoUrl = "https://api.github.com/users/barringtonemelie/repos"; 
 const loader = document.querySelector(".loader"); 
+const loaderPortfolio = document.querySelector(".loader-portfolio"); 
+
 
 //Also, event delegation, event.target.getAttribute() (custom property) och spara till variabel för att se vad som tryckted på,
 //istället för att ha eventlistener för varenda element
@@ -79,16 +81,18 @@ async function getEducationResume () {
 
 async function getRepos() {
     let response = await fetch(repoUrl); 
+
     if (response.ok) {
         let repos = await response.json(); 
+        loaderPortfolio.style.display = "none"; 
         console.log(repos); 
+        
     }
     else {
         console.log("HTTP error: " + response.status); 
     }
 };
 
-getRepos(); 
 
 
 
