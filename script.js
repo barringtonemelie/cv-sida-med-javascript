@@ -28,6 +28,46 @@ else if (path === "/education.html" || path === "/cv-sida-med-javascript/educati
 }
 else if (path === "/portfolio.html" || path === "/cv-sida-med-javascript/portfolio.html") {
     getRepos(); 
+    let galleryContainer = document.querySelector(".gallery-container"); 
+    
+    galleryContainer.addEventListener('click', modalPopup); 
+    
+    function modalPopup(event) {
+
+        const clickedElementId  = event.target.getAttribute("id");
+        const clickedElement = document.getElementById(clickedElementId); 
+        console.log(event.target.getAttribute("id")); 
+
+        if (clickedElementId === 'repo0') {
+            clickedElement.innerHTML = "close"; 
+            clickedElement.parentElement.setAttribute("id", "modal");
+            clickedElement.addEventListener("click", closeModal(clickedElement)); 
+        }
+        else if (clickedElementId === 'repo1') {
+            clickedElement.innerHTML = "close"; 
+            clickedElement.parentElement.setAttribute("id", "modal");
+        }
+        else if (clickedElementId === 'repo2') {
+            clickedElement.innerHTML = "close"; 
+            clickedElement.parentElement.setAttribute("id", "modal");
+        }
+        else if (clickedElementId === 'repo3') {
+            clickedElement.innerHTML = "close"; 
+            clickedElement.parentElement.setAttribute("id", "modal");
+            clickedElement.addEventListener("click", closeModal(clickedElement)); 
+        }
+        else if (clickedElementId === 'repo4') {
+            clickedElement.innerHTML = "close"; 
+            clickedElement.parentElement.setAttribute("id", "modal");
+        }
+        else {
+            console.log("Nothing happened."); 
+        }
+    };
+
+    function closeModal (elementToClose) {
+        elementToClose.removeAttribute("id"); 
+    }
 }
 
 async function getWorkResume() {
@@ -90,10 +130,10 @@ async function getRepos() {
         loaderPortfolio.style.display = "none"; 
         console.log(repos, projectPreview); 
 
-        let i = 0; //Used to get the images from the JSON file at the same time as the repos from Github
+        let i = 0; //Used to get the images from the JSON file at the same time as the repos from Github and to set IDs to the divs generated (since I neeed to be able to find which one was clicked)
         repos.forEach(repo => {
             let div = document.createElement("div"); 
-            div.innerHTML += `<h3>${repo.name}</h3><p>${repo.description}</p><img src="${projectPreview.projectsPreview[i]}" alt="A preview of my project">`; 
+            div.innerHTML += `<h3>${repo.name}</h3><span id="repo${i}">More</span><p>${repo.description}</p><img src="${projectPreview.projectsPreview[i]}" alt="A preview of my project">`; 
             portfolioContainer.appendChild(div); 
             i++; 
         }); 
