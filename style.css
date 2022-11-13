@@ -526,15 +526,16 @@ footer>p {
         background-color: #561F1F;
         color: #e48787; 
     }
-    .main-content:before {
-        content: "You're currently using dark mode."; 
-        padding-left: 1.5rem; 
-        font-family: "Cutive Mono";
-        font-size: 1.5rem;
-    }
     article {
         background-color: #561F1F;
         color: #d67a7a;
+    }
+    .about-list>li>a {
+        color: #d67a7a;
+    }
+    
+    .about-list>li>a:visited {
+        color: #d67a7a; 
     }
     .loader {
         border: 1rem solid #df3939; 
@@ -552,9 +553,23 @@ footer>p {
             border-left: 2px dotted #d67a7a;
         }
     }
+    .gallery-container>div {
+        background-color: #6D3737;
+    }
     .gallery-container>div>h3 {
         background-color: #561F1F;
         color: #d67a7a;
+    }
+    .gallery-container>div>span {
+        background-color: #561F1F;
+        color: #d67a7a;
+    }
+    .gallery-container>.modal>p {
+        background-color: #6D3737;
+        color: #d67a7a;
+    }
+    .modal {
+        background-color: #6D3737;
     }
     .cards>h3 {
         border-bottom: 2px dotted #d67a7a;
@@ -568,11 +583,4 @@ footer>p {
         color: #6D3737;
     }
 }
-@media (prefers-color-scheme: light) {
-    .main-content:before {
-        content: "You're currently using light mode."; 
-        padding-left: 1.5rem; 
-        font-size: 1.5rem;
-        font-family: "Cutive Mono";
-    }
-}
+@media 
