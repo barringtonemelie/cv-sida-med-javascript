@@ -3,9 +3,6 @@ const repoUrl = "https://api.github.com/users/barringtonemelie/repos";
 const loader = document.querySelector(".loader"); 
 const loaderPortfolio = document.querySelector(".loader-portfolio"); 
 
-//Also, event delegation, event.target.getAttribute() (custom property) och spara till variabel för att se vad som tryckted på,
-//istället för att ha eventlistener för varenda element
-//Annat tips: custom properties i HTML för att ge användaren möjlighet att klicka på saker, tex se mer om din skola eller så 
 
 const portfolioContainer = document.querySelector(".gallery-container"); 
 
