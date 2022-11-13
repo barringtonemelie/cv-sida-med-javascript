@@ -7,3 +7,4 @@ Detta är utvecklingen på första CV-sidan skapad som ett skolprojekt på Chas 
 
 ### Länk till Github pages: ###
 
+https://barringtonemelie.github.io/cv-sida-med-javascript/ 
