@@ -397,7 +397,7 @@ footer>p {
     .home-page {
         display: grid; 
         grid-template-columns: 2fr 1fr;
-        grid-template-rows: 1fr 7fr; 
+        grid-template-rows: 10rem 1fr; 
         grid-template-areas: 
         "header header"
         "left-column right-column";
@@ -410,11 +410,13 @@ footer>p {
     .index-profile {
         grid-area: right-column; 
         padding: 1rem; 
+        align-self: start; 
         justify-content: flex-start;
         border-left: 2px dotted var(--off-white);
     }
     .main-content {
         grid-area: left-column; 
+        align-self: start;
         padding: 1rem; 
     }
     /* About me page styling */
