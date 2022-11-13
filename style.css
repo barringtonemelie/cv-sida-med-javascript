@@ -255,11 +255,15 @@ p {
 .gallery-container>div>h3 {
     font-family: "Cutive Mono";
     font-size: 0.8rem;
-    max-width: 150px; 
+    width: fit-content; 
     position: absolute; 
     z-index: 2; 
     padding: 0.5rem; 
     background-color: var(--off-white);
+}
+
+.gallery-container>div>p {
+    margin: 2rem 0 1rem 0; 
 }
 
 .gallery-container>div>img {

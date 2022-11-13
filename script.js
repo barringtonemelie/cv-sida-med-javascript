@@ -3,10 +3,12 @@ const repoUrl = "https://api.github.com/users/barringtonemelie/repos";
 const loader = document.querySelector(".loader"); 
 const loaderPortfolio = document.querySelector(".loader-portfolio"); 
 
-
 //Also, event delegation, event.target.getAttribute() (custom property) och spara till variabel för att se vad som tryckted på,
 //istället för att ha eventlistener för varenda element
 //Annat tips: custom properties i HTML för att ge användaren möjlighet att klicka på saker, tex se mer om din skola eller så 
+
+const portfolioContainer = document.querySelector(".gallery-container"); 
+
 const workCards = document.querySelectorAll(".cards-hidden"); 
 const workTitle = document.querySelectorAll(".work-title"); 
 const workYears = document.querySelectorAll(".work-years"); 
@@ -87,6 +89,12 @@ async function getRepos() {
         loaderPortfolio.style.display = "none"; 
         console.log(repos); 
         
+        repos.forEach(repo => {
+            let div = document.createElement("div"); 
+            div.innerHTML += `<h3>${repo.name}</h3><p>${repo.description}</p>`; 
+            portfolioContainer.appendChild(div); 
+            //Add image? 
+        }); 
     }
     else {
         console.log("HTTP error: " + response.status); 
