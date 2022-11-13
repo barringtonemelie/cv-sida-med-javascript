@@ -52,7 +52,7 @@ else if (path === "/portfolio.html" || path === "/cv-sida-med-javascript/portfol
             modalFunctionality(clickedBtnId, 4);
         }
         else {
-            console.log("Button was not clicked."); 
+            console.log("More button was not clicked."); 
         }
     };
 
