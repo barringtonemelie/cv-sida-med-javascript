@@ -250,20 +250,25 @@ p {
 .gallery-container>div {
     overflow: hidden;
     padding: 0.5rem; 
+    border: 1px solid var(--dark-bg-colour);
+    border-radius: 5px; 
+    margin: 5px; 
+    background-color: rgb(222, 202, 202);
 }
 
 .gallery-container>div>h3 {
     font-family: "Cutive Mono";
-    font-size: 0.8rem;
+    font-size: 1.5rem;
     width: fit-content; 
     position: absolute; 
     z-index: 2; 
     padding: 0.5rem; 
     background-color: var(--off-white);
+    border-radius: 5px;
 }
 
 .gallery-container>div>p {
-    margin: 2rem 0 1rem 0; 
+    margin: 2rem 0 0 0; 
 }
 
 .gallery-container>div>img {
@@ -424,7 +429,7 @@ footer>p {
     .gallery-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        grid-template-rows: repeat(6, 300px);
+        grid-template-rows: repeat(4, 350px);
         grid-auto-flow: dense;
     }
     .gallery-container>div {
@@ -435,7 +440,7 @@ footer>p {
         transform: scale(1.2); 
     }
     .gallery-container>div>h3 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     .gallery-container>div:nth-child(4n) {

@@ -16,6 +16,8 @@ const eduTitle = document.querySelectorAll(".edu-title");
 const eduYears = document.querySelectorAll(".edu-year"); 
 const eduDescription = document.querySelectorAll(".edu-description"); 
 
+
+
 const path = window.location.pathname; 
 
 if (path === "/experience.html" || path === "/cv-sida-med-javascript/experience.html") {
@@ -29,10 +31,10 @@ else if (path === "/portfolio.html" || path === "/cv-sida-med-javascript/portfol
 }
 
 async function getWorkResume() {
-    let response = await fetch(url);
+    const response = await fetch(url);
     
     if (response.ok) {
-        let dataResume = await response.json(); 
+        const dataResume = await response.json(); 
         loader.style.display = "none"; 
         
         for (let i = 0; i < dataResume.work.length; i++) {
@@ -55,10 +57,10 @@ async function getWorkResume() {
 }
 
 async function getEducationResume () {
-    let response = await fetch(url);
+    const response = await fetch(url);
     
     if (response.ok) {
-        let dataResume = await response.json(); 
+        const dataResume = await response.json(); 
         loader.style.display = "none"; 
         for (let i = 0; i < dataResume.education.length; i++) {
             eduTitle[i].innerHTML += dataResume.education[i].type;
@@ -79,22 +81,25 @@ async function getEducationResume () {
 }
 
 async function getRepos() {
-    let response = await fetch(repoUrl); 
+    const response = await fetch(repoUrl); 
+    const secondResponse = await fetch(url); 
 
-    if (response.ok) {
-        let repos = await response.json(); 
+    if (response.ok && secondResponse.ok) {
+        const repos = await response.json(); 
+        const projectPreview = await secondResponse.json(); 
         loaderPortfolio.style.display = "none"; 
-        console.log(repos); 
-        
+        console.log(repos, projectPreview); 
+
+        let i = 0; //Used to get the images from the JSON file at the same time as the repos from Github
         repos.forEach(repo => {
             let div = document.createElement("div"); 
-            div.innerHTML += `<h3>${repo.name}</h3><p>${repo.description}</p>`; 
+            div.innerHTML += `<h3>${repo.name}</h3><p>${repo.description}</p><img src="${projectPreview.projectsPreview[i]}" alt="A preview of my project">`; 
             portfolioContainer.appendChild(div); 
-            //Add image? 
+            i++; 
         }); 
     }
     else {
-        console.log("HTTP error: " + response.status); 
+        console.log("HTTP error: " + response.status + "Second response error: " + secondResponse.status); 
     }
 };
 

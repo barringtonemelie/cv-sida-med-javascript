@@ -33,5 +33,13 @@
             "school": "Tannbergsskolan",
             "year": "2012-2015"
         }
+    ],
+
+    "projectsPreview": [
+        "./images/preview-codecademy-github.jpg", 
+        "./images/preview-cv-sida.jpg", 
+        "./images/preview-cv-sida-js.jpg", 
+        "./images/preview-number-guessing-game.jpg", 
+        "./images/preview-rock-paper-scissors.jpg"
     ]
 }
