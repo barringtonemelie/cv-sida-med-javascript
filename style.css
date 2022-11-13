@@ -467,18 +467,30 @@ footer>p {
         grid-row: span 3; 
     }
 
-    #modal {
-        margin: 5px auto; 
+    .gallery-container>.modal {
         z-index: 100; 
         position: fixed;
-        top: 0; 
+        top: -100px; 
         left: 0; 
-        width: min(95%, 1200px);  
+        width: 100%;   
         transition: none;
+        margin: 0; 
+        padding: 10%; 
+        background-color: rgba(0, 0, 0, 0.601);
+        border: none; 
+        border-radius: 0;
     }
 
-    #modal:hover {
+    .gallery-container>.modal>p {
+        background-color: var(--light-bg-colour);
+    }
+
+    .gallery-container>.modal:hover {
         transform: none;
+    }
+
+    .hide-btn {
+        display: none; 
     }
 
     footer {

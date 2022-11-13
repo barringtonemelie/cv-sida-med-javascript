@@ -34,39 +34,54 @@ else if (path === "/portfolio.html" || path === "/cv-sida-med-javascript/portfol
     
     function modalPopup(event) {
 
-        const clickedElementId  = event.target.getAttribute("id");
-        const clickedElement = document.getElementById(clickedElementId); 
-        console.log(event.target.getAttribute("id")); 
+        const clickedBtnId = event.target.getAttribute("id"); 
 
-        if (clickedElementId === 'repo0') {
-            clickedElement.innerHTML = "close"; 
-            clickedElement.parentElement.setAttribute("id", "modal");
-            clickedElement.addEventListener("click", closeModal(clickedElement)); 
+        if (clickedBtnId === 'repo0') {
+            modalFunctionality(clickedBtnId, 0);
         }
-        else if (clickedElementId === 'repo1') {
-            clickedElement.innerHTML = "close"; 
-            clickedElement.parentElement.setAttribute("id", "modal");
+        else if (clickedBtnId === 'repo1') {
+            modalFunctionality(clickedBtnId, 1);
         }
-        else if (clickedElementId === 'repo2') {
-            clickedElement.innerHTML = "close"; 
-            clickedElement.parentElement.setAttribute("id", "modal");
+        else if (clickedBtnId === 'repo2') {
+            modalFunctionality(clickedBtnId, 2);
         }
-        else if (clickedElementId === 'repo3') {
-            clickedElement.innerHTML = "close"; 
-            clickedElement.parentElement.setAttribute("id", "modal");
-            clickedElement.addEventListener("click", closeModal(clickedElement)); 
+        else if (clickedBtnId === 'repo3') {
+            modalFunctionality(clickedBtnId, 3);
         }
-        else if (clickedElementId === 'repo4') {
-            clickedElement.innerHTML = "close"; 
-            clickedElement.parentElement.setAttribute("id", "modal");
+        else if (clickedBtnId === 'repo4') {
+            modalFunctionality(clickedBtnId, 4);
         }
         else {
             console.log("Nothing happened."); 
         }
     };
 
-    function closeModal (elementToClose) {
-        elementToClose.removeAttribute("id"); 
+    function closeModal (event) { 
+        const targetElement = document.querySelector(".modal"); 
+        targetElement.classList.remove("modal"); 
+        const closeModal = document.querySelector(".close-btn"); 
+        closeModal.remove(); 
+        const showBtn = document.querySelector(".hide-btn"); 
+        showBtn.classList.remove("hide-btn"); 
+    }
+
+    function modalFunctionality (btnId, paraNum) {
+            const btn = document.getElementById(btnId);
+            btn.classList.add("hide-btn");
+            let modalElement = btn.parentElement;
+            modalElement.classList.add("modal"); 
+
+            let closeBtn = document.createElement("span"); 
+            closeBtn.innerHTML = "Close"; 
+            closeBtn.setAttribute("class", "close-btn"); 
+
+            const repoPara = document.querySelector(`.repo-para${paraNum}`); 
+            modalElement.insertBefore(closeBtn, repoPara); 
+
+            closeBtn.addEventListener("click", closeModal); 
+
+            console.log(modalElement); 
+            console.log(closeBtn); 
     }
 }
 
@@ -130,10 +145,10 @@ async function getRepos() {
         loaderPortfolio.style.display = "none"; 
         console.log(repos, projectPreview); 
 
-        let i = 0; //Used to get the images from the JSON file at the same time as the repos from Github and to set IDs to the divs generated (since I neeed to be able to find which one was clicked)
+        let i = 0; //Used to get the images from the JSON file at the same time as the repos from Github and to set IDs to the spans generated (since I neeed to be able to find which one was clicked)
         repos.forEach(repo => {
             let div = document.createElement("div"); 
-            div.innerHTML += `<h3>${repo.name}</h3><span id="repo${i}">More</span><p>${repo.description}</p><img src="${projectPreview.projectsPreview[i]}" alt="A preview of my project">`; 
+            div.innerHTML += `<h3>${repo.name}</h3><span id="repo${i}">More</span><p class="repo-para${i}">${repo.description}</p><img src="${projectPreview.projectsPreview[i]}" alt="A preview of my project">`; 
             portfolioContainer.appendChild(div); 
             i++; 
         }); 
