@@ -52,7 +52,7 @@ else if (path === "/portfolio.html" || path === "/cv-sida-med-javascript/portfol
             modalFunctionality(clickedBtnId, 4);
         }
         else {
-            console.log("Nothing happened."); 
+            console.log("Button was not clicked."); 
         }
     };
 
@@ -79,9 +79,6 @@ else if (path === "/portfolio.html" || path === "/cv-sida-med-javascript/portfol
             modalElement.insertBefore(closeBtn, repoPara); 
 
             closeBtn.addEventListener("click", closeModal); 
-
-            console.log(modalElement); 
-            console.log(closeBtn); 
     }
 }
 
@@ -143,7 +140,6 @@ async function getRepos() {
         const repos = await response.json(); 
         const projectPreview = await secondResponse.json(); 
         loaderPortfolio.style.display = "none"; 
-        console.log(repos, projectPreview); 
 
         let i = 0; //Used to get the images from the JSON file at the same time as the repos from Github and to set IDs to the spans generated (since I neeed to be able to find which one was clicked)
         repos.forEach(repo => {
